@@ -12,7 +12,6 @@ const HomePage = ({ countries }) => {
   const [searchResult, setSearchResult] = useState([]);
 
   const changeInputHandler = (e) => {
-    console.log(e.target.value);
     setValue(e.target.value);
     const result = countries.filter(({ name }) =>
       name.toLowerCase().startsWith(e.target.value.trim().toLowerCase())

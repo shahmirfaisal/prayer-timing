@@ -4,15 +4,37 @@ import axios from "axios";
 import { Location } from "../../../components/Location";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const CountryPage = ({ cities }) => {
   const {
     query: { country, iso2 },
   } = useRouter();
+  const [value, setValue] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
+  const changeInputHandler = (e) => {
+    setValue(e.target.value);
+    const result = cities.filter(({ name }) =>
+      name.toLowerCase().startsWith(e.target.value.trim().toLowerCase())
+    );
+    setSearchResult(result);
+  };
 
   return (
     <Layout>
-      <SearchBar placeholder="Search for a city..." />
+      <SearchBar
+        placeholder="Search for a city..."
+        value={value}
+        onChange={changeInputHandler}
+        searchResult={searchResult.map(({ name }) => (
+          <li key={name}>
+            <Link href={`/${country}/${iso2}/${name}`}>
+              <a title={`Prayers timing for ${name}`}>{name}</a>
+            </Link>
+          </li>
+        ))}
+      />
 
       <Location
         list={cities.map(({ name }) => (

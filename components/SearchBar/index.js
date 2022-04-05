@@ -1,20 +1,20 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import classes from "./style.module.scss";
-import Link from "next/link";
 import { useState } from "react";
 
 export const SearchBar = ({ placeholder, value, onChange, searchResult }) => {
   const [showResult, setShowResult] = useState(false);
+  const [flag, setFlag] = useState(false);
 
   const focusInputHandler = (e) => {
-    console.log("Focused");
-    // setShowResult(true);
+    if (value.trim() !== "") {
+      setShowResult(true);
+    }
   };
 
   const blurInputHandler = (e) => {
-    console.log("Blurred");
-    // setShowResult(false);
+    if (!flag) setShowResult(false);
   };
 
   const changeInputHandler = (e) => {
@@ -47,8 +47,13 @@ export const SearchBar = ({ placeholder, value, onChange, searchResult }) => {
           classes.searchResult,
           showResult ? null : classes.hideSearchResult,
         ].join(" ")}
+        onMouseDown={() => setFlag(true)}
+        onMouseUp={() => setFlag(false)}
       >
-        <ul>{searchResult}</ul>
+        <ul>
+          {searchResult}
+          {!searchResult.length && <p>No result found!</p>}
+        </ul>
       </div>
     </div>
   );
