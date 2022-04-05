@@ -1,0 +1,28 @@
+.list {
+    list-style-type: none;
+
+    li {
+        &:nth-child(even) {
+            a {
+                // clip-path: polygon(3% 0, 100% 0%, 97% 100%, 0 100%);
+            }
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+            background-color: #D9DD92;
+            color: black;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            transition: 0.4s;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+            // clip-path: polygon(0 0, 97% 0, 100% 100%, 3% 100%);
+            // clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

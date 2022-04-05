@@ -1,0 +1,62 @@
+.searchContainer {
+
+}
+
+.searchResult {
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    border-radius: 5px;
+    padding: 20px 20px;
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: scroll;
+
+    ul {
+        list-style-type: none;
+
+        li {
+            &:not(:last-child) > a {
+                margin-bottom: 20px;
+            }
+
+            a {
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                text-decoration: none;
+                display: block;
+                background-color: white;
+                color: black;
+                padding: 10px 20px;
+                box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.hideSearchResult {
+    display: none;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-top: 50px;
+
+    input {
+        border: none;
+        font-size: 20px;
+        outline: none;
+        margin-left: 10px;
+        display: block;
+        flex-grow: 1;
+
+        &::placeholder {
+            opacity: 0.8;
+        }
+    }
+}
